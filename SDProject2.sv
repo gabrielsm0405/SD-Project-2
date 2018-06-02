@@ -48,7 +48,7 @@ module decodificador(
 						prox_estado=B;
 						tempo=64'd0;
 					end
-				B:
+				B:	
 					if(IRDA_RXD) begin									//Estado 2
 						if(tempo>leadCodeTime) begin
 							prox_estado=C;
@@ -59,11 +59,13 @@ module decodificador(
 						end
 					end
 					else begin
+						tempo<=tempo+64'd1;
 						prox_estado=B;
 					end
 				C:
 					if(IRDA_RXD) begin									//Estado 3
 						prox_estado=C;
+						tempo<=tempo+64'd1;
 					end
 					else begin
 						if(tempo>leadCodeTime) begin
@@ -107,6 +109,7 @@ module decodificador(
 				G:
 					if(IRDA_RXD) begin								//Estado 2
 						prox_estado=G;
+						tempo<=tempo+64'd1;
 					end 
 					else begin
 						if(cont<32'd8) begin
