@@ -62,13 +62,13 @@ module decodificador(
 					if(IRDA_RXD) begin									//Estado 3
 						prox_estado=C;
 						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
+						if(tempo>infinity) begin
 							prox_estado=A;
 						end
 					end
 					else begin
 						prox_estado=D;
-						cont=18b'0;
+						cont=18'b0;
 					end
 				end
 				D:begin															//Máquina 2
@@ -85,7 +85,7 @@ module decodificador(
 					if(IRDA_RXD) begin								//Estado 2
 						prox_estado=E;
 						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
+						if(tempo>infinity) begin
 							prox_estado=A;
 						end
 					end
@@ -113,7 +113,7 @@ module decodificador(
 					if(IRDA_RXD) begin								//Estado 2
 						prox_estado=G;
 						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
+						if(tempo>infinity) begin
 							prox_estado=A;
 						end
 					end 
@@ -150,7 +150,7 @@ module decodificador(
 					if(IRDA_RXD) begin						//Estado 2
 						prox_estado=I;
 						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
+						if(tempo>infinity) begin
 							prox_estado=A;
 						end
 					end 
@@ -190,4 +190,5 @@ module decodificador(
 					end
 				end
 			endcase
+		end
 endmodule
