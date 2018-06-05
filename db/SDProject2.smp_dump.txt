@@ -1,0 +1,26 @@
+
+State Machine - |decodificador|prox_estado
+Name prox_estado.J prox_estado.I prox_estado.H prox_estado.G prox_estado.F prox_estado.E prox_estado.D prox_estado.C prox_estado.B prox_estado.A 
+prox_estado.A 0 0 0 0 0 0 0 0 0 0 
+prox_estado.B 0 0 0 0 0 0 0 0 1 1 
+prox_estado.C 0 0 0 0 0 0 0 1 0 1 
+prox_estado.D 0 0 0 0 0 0 1 0 0 1 
+prox_estado.E 0 0 0 0 0 1 0 0 0 1 
+prox_estado.F 0 0 0 0 1 0 0 0 0 1 
+prox_estado.G 0 0 0 1 0 0 0 0 0 1 
+prox_estado.H 0 0 1 0 0 0 0 0 0 1 
+prox_estado.I 0 1 0 0 0 0 0 0 0 1 
+prox_estado.J 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |decodificador|estado
+Name estado.J estado.I estado.H estado.G estado.F estado.E estado.D estado.C estado.B estado.A 
+estado.A 0 0 0 0 0 0 0 0 0 0 
+estado.B 0 0 0 0 0 0 0 0 1 1 
+estado.C 0 0 0 0 0 0 0 1 0 1 
+estado.D 0 0 0 0 0 0 1 0 0 1 
+estado.E 0 0 0 0 0 1 0 0 0 1 
+estado.F 0 0 0 0 1 0 0 0 0 1 
+estado.G 0 0 0 1 0 0 0 0 0 1 
+estado.H 0 0 1 0 0 0 0 0 0 1 
+estado.I 0 1 0 0 0 0 0 0 0 1 
+estado.J 1 0 0 0 0 0 0 0 0 1 
