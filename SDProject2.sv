@@ -16,7 +16,7 @@ module decodificador(
 		 input IRDA_RXD; // infrared
 		 input CLOCK_50; // clock de 50Mz
 		 
-		 //SaÃ­das
+		 //Saidas
 		 output LEDR0;
 		 output LEDR1;
 		 output LEDR2;
@@ -48,19 +48,19 @@ module decodificador(
 			estado=prox_estado;
 			
 			if(mainReg[23:16]==~mainReg[31:24]) begin
-				LEDR0=mainReg[16];
-				LEDR1=mainReg[17];
-				LEDR2=mainReg[18];
-				LEDR3=mainReg[19];
-				LEDR4=mainReg[20];
-				LEDR5=mainReg[21];
-				LEDR6=mainReg[22];
-				LEDR7=mainReg[23];
+				LEDR0<=mainReg[16];
+				LEDR1<=mainReg[17];
+				LEDR2<=mainReg[18];
+				LEDR3<=mainReg[19];
+				LEDR4<=mainReg[20];
+				LEDR5<=mainReg[21];
+				LEDR6<=mainReg[22];
+				LEDR7<=mainReg[23];
 			end
 			
 			case (estado)
 				A:begin	
-					cont=64'b0;										//MÃ¡quina 1
+					cont<=64'b0;										//MÃ¡quina 1
 					if(IRDA_RXD) begin									//Estado 1
 						prox_estado=A;
 					end
@@ -71,15 +71,15 @@ module decodificador(
 				end
 				
 				B:begin
-					tempo=tempo+1'b1;
+					tempo<=tempo+1'b1;
 					
 					if(IRDA_RXD) begin
-						cont=cont+1'b1;
+						cont<=cont+1'b1;
 						
 						if(cont==1) begin
 							if(tempo>leadCodeTime) begin
 								prox_estado=C;
-								tempo=64'b0;
+								tempo<=64'b0;
 							end
 							else begin
 								prox_estado=A;
@@ -91,7 +91,7 @@ module decodificador(
 							end
 							else begin
 								prox_estado=C;
-								tempo=64'b0;
+								tempo<=64'b0;
 							end
 						end
 					end
@@ -101,7 +101,7 @@ module decodificador(
 				end
 				
 				C:begin
-					tempo=tempo+1'b1;
+					tempo<=tempo+1'b1;
 					
 					if(tempo>infinity) begin
 						prox_estado=A;
@@ -115,13 +115,13 @@ module decodificador(
 							
 							if(cont>1) begin
 								if(tempo>bitTime) begin
-									mainReg[cont-1] = 1;
+									mainReg[cont-1] <= 1;
 								end
 								else begin
-									mainReg[cont-1] = 0;
+									mainReg[cont-1] <= 0;
 								end
 							end
-							tempo=64'b0;
+							tempo<=64'b0;
 						end
 					end
 				end
