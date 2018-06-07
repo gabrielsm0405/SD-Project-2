@@ -29,8 +29,8 @@ module decodificador(
 		 initial LEDE1=0;
 	
 		 parameter bitTime=41500;
-		 parameter infinity=262144;
-		 parameter leadCodeTime=230000;
+		 parameter infinity=550000;
+		 parameter leadCodeTime=450000;
 	
 		 reg[31:0] temp;
 		 reg[7:0] mainReg;
@@ -41,17 +41,6 @@ module decodificador(
 		 reg[3:0] estado=A;
 		 
 		 always@(posedge CLOCK_50) begin
-			if(temp[23:16]==~temp[31:24]) begin
-				mainReg[0]=temp[16];
-				mainReg[1]=temp[17];
-				mainReg[2]=temp[18];
-				mainReg[3]=temp[19];
-				mainReg[4]=temp[20];
-				mainReg[5]=temp[21];
-				mainReg[6]=temp[22];
-				mainReg[7]=temp[23];
-			end
-		
 			LEDR0=mainReg[0];
 			LEDR1=mainReg[1];
 			LEDR2=mainReg[2];
@@ -63,7 +52,9 @@ module decodificador(
 			
 			case (estado)
 				A:begin
-					cont=64'b0;										//MÃ¡quina 1
+					LEDE1=1;
+					cont=64'b0;
+					temp=32'b0;									//MÃ¡quina 1
 					if(IRDA_RXD) begin									//Estado 1
 						estado=A;
 					end
@@ -74,6 +65,7 @@ module decodificador(
 				end
 				
 				B:begin
+				LEDE1=0;
 					tempo=tempo+1'b1;
 					
 					if(IRDA_RXD) begin
@@ -90,8 +82,18 @@ module decodificador(
 						end
 						else begin
 							if(cont>33) begin
-								LEDE1=~LEDE1;
 								estado=A;
+								
+								if(temp[23:16]==~temp[31:24]) begin
+									mainReg[0]=temp[16];
+									mainReg[1]=temp[17];
+									mainReg[2]=temp[18];
+									mainReg[3]=temp[19];
+									mainReg[4]=temp[20];
+									mainReg[5]=temp[21];
+									mainReg[6]=temp[22];
+									mainReg[7]=temp[23];
+								end
 							end
 							else begin
 								estado=C;
@@ -105,6 +107,7 @@ module decodificador(
 				end
 				
 				C:begin
+				LEDE1=0;
 					tempo=tempo+1'b1;
 					
 					if(tempo>=infinity) begin
@@ -117,13 +120,8 @@ module decodificador(
 						else begin
 							estado=B;
 							
-							if(cont>1 && cont<33) begin
-								if(tempo>bitTime) begin
-									temp[cont-2] = 1;
-								end
-								else begin
-									temp[cont-2] = 0;
-								end
+							if(cont>=2 && cont<=33 && tempo>bitTime) begin
+								temp[cont-2] = 1;
 							end
 							
 							tempo=64'b0;
