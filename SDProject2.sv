@@ -9,7 +9,8 @@ module decodificador(
 		 LEDR5,
 		 LEDR6,
 		 LEDR7,
-		 LEDE1);
+		 LEDE1,
+		 OUTIR);
 		 
 		 //Entradas
 		 input IRDA_RXD; // infrared
@@ -25,12 +26,14 @@ module decodificador(
 		 output LEDR6;
 		 output LEDR7;
 		 output LEDE1;
+		 output OUTIR;
 		 
 		 initial LEDE1=0;
+		 initial OUTIR=1;
 	
 		 parameter bitTime=41500;
-		 parameter infinity=550000;
-		 parameter leadCodeTime=450000;
+		 parameter infinity=262143;
+		 parameter is_a_bit=20000;
 	
 		 reg[31:0] temp;
 		 reg[7:0] mainReg;
@@ -41,6 +44,8 @@ module decodificador(
 		 reg[3:0] estado=A;
 		 
 		 always@(posedge CLOCK_50) begin
+			OUTIR=IRDA_RXD;
+		
 			LEDR0=mainReg[0];
 			LEDR1=mainReg[1];
 			LEDR2=mainReg[2];
@@ -54,51 +59,38 @@ module decodificador(
 				A:begin
 					LEDE1=1;
 					cont=64'b0;
-					temp=32'b0;									//MÃ¡quina 1
+					temp=32'b0;
+														//MÃ¡quina 1
 					if(IRDA_RXD) begin									//Estado 1
 						estado=A;
 					end
 					else begin
 						estado=B;
-						tempo=64'b0;
 					end
 				end
 				
 				B:begin
-				LEDE1=0;
-					tempo=tempo+1'b1;
-					
+				LEDE1=0;					
 					if(IRDA_RXD) begin
 						cont=cont+1'b1;
-						
-						if(cont==1) begin
-							if(tempo>leadCodeTime) begin
-								estado=C;
-								tempo=64'b0;
-							end
-							else begin
-								estado=A;
+												
+						if(cont>33) begin
+							estado=A;
+							
+							if(temp[23:16]==~temp[31:24]) begin
+								mainReg[0]=temp[16];
+								mainReg[1]=temp[17];
+								mainReg[2]=temp[18];
+								mainReg[3]=temp[19];
+								mainReg[4]=temp[20];
+								mainReg[5]=temp[21];
+								mainReg[6]=temp[22];
+								mainReg[7]=temp[23];
 							end
 						end
 						else begin
-							if(cont>33) begin
-								estado=A;
-								
-								if(temp[23:16]==~temp[31:24]) begin
-									mainReg[0]=temp[16];
-									mainReg[1]=temp[17];
-									mainReg[2]=temp[18];
-									mainReg[3]=temp[19];
-									mainReg[4]=temp[20];
-									mainReg[5]=temp[21];
-									mainReg[6]=temp[22];
-									mainReg[7]=temp[23];
-								end
-							end
-							else begin
-								estado=C;
-								tempo=64'b0;
-							end
+							estado=C;
+							tempo=64'b0;
 						end
 					end
 					else begin
@@ -110,22 +102,24 @@ module decodificador(
 				LEDE1=0;
 					tempo=tempo+1'b1;
 					
-					if(tempo>=infinity) begin
-						estado=A;
+					if(IRDA_RXD) begin
+						estado=C;
+						
+						if(tempo>=infinity) begin
+							estado=A;
+						end
+					end
+					else if(tempo>is_a_bit) begin
+						estado=B;
+						
+						if(cont>=2 && cont<=33 && tempo>bitTime) begin
+							temp[cont-2] = 1;
+						end
+						
+						tempo=64'b0;
 					end
 					else begin
-						if(IRDA_RXD) begin
-							estado=C;
-						end
-						else begin
-							estado=B;
-							
-							if(cont>=2 && cont<=33 && tempo>bitTime) begin
-								temp[cont-2] = 1;
-							end
-							
-							tempo=64'b0;
-						end
+						tempo=64'b0;
 					end
 				end
 			endcase
