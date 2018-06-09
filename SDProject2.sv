@@ -8,13 +8,15 @@ module decodificador(
 		 LEDR4,
 		 LEDR5,
 		 LEDR6,
-		 LEDR7);
+		 LEDR7,
+		 LEDE1,
+		 OUTIR);
 		 
 		 //Entradas
 		 input IRDA_RXD; // infrared
 		 input CLOCK_50; // clock de 50Mz
 		 
-		 //Saídas
+		 //Saidas
 		 output LEDR0;
 		 output LEDR1;
 		 output LEDR2;
@@ -23,171 +25,103 @@ module decodificador(
 		 output LEDR5;
 		 output LEDR6;
 		 output LEDR7;
+		 output LEDE1;
+		 output OUTIR;
+		 
+		 initial LEDE1=0;
+		 initial OUTIR=1;
 	
 		 parameter bitTime=41500;
-		 parameter infinity=200000;
+		 parameter infinity=262143;
+		 parameter is_a_bit=20000;
 	
-		 reg[7:0] mainReg, invReg;
-		 reg[17:0] tempo, cont;
+		 reg[31:0] temp;
+		 reg[7:0] mainReg;
+		 reg[64:0] tempo, cont;
 		 
-		 parameter[3:0] A=4'b0000, B=4'b0001, C=4'b0010, 
-				D=4'b0011, E=4'b0100, F=4'b0101, 
-				G=4'b0110, H=4'b0111, I=4'b1000, 
-				J=4'b1001;
+		 parameter[3:0] A=4'b0000, B=4'b0001, C=4'b0010;
 		 
-		 reg[3:0] estado, prox_estado;
+		 reg[3:0] estado=A;
 		 
 		 always@(posedge CLOCK_50) begin
-			estado=prox_estado;
-	
+			OUTIR=IRDA_RXD;
+		
+			LEDR0=mainReg[0];
+			LEDR1=mainReg[1];
+			LEDR2=mainReg[2];
+			LEDR3=mainReg[3];
+			LEDR4=mainReg[4];
+			LEDR5=mainReg[5];
+			LEDR6=mainReg[6];
+			LEDR7=mainReg[7];
+			
 			case (estado)
-				A:begin														//Máquina 1
+				A:begin
+					LEDE1=1;
+					cont=64'b0;
+					temp=32'b0;
+														//MÃ¡quina 1
 					if(IRDA_RXD) begin									//Estado 1
-						prox_estado=A;
+						estado=A;
 					end
 					else begin
-						prox_estado=B;
+						estado=B;
 					end
 				end
+				
 				B:begin
-					if(IRDA_RXD) begin									//Estado 2
-						prox_estado=C;
-						tempo=18'b0;
-					end
-					else begin
-						prox_estado=B;
-					end
-				end
-				C:begin
-					if(IRDA_RXD) begin									//Estado 3
-						prox_estado=C;
-						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
-							prox_estado=A;
-						end
-					end
-					else begin
-						prox_estado=D;
-						cont=18b'0;
-					end
-				end
-				D:begin															//Máquina 2
-					if(IRDA_RXD) begin								//Estado 1
-						prox_estado=E;
+				LEDE1=0;					
+					if(IRDA_RXD) begin
 						cont=cont+1'b1;
-						tempo=18'b0;
-					end
-					else begin
-						prox_estado=D;
-					end
-				end
-				E:begin
-					if(IRDA_RXD) begin								//Estado 2
-						prox_estado=E;
-						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
-							prox_estado=A;
-						end
-					end
-					else begin
-						if(cont<18'd16) begin
-							prox_estado=D;
+												
+						if(cont>33) begin
+							estado=A;
+							
+							if(temp[23:16]==~temp[31:24]) begin
+								mainReg[0]=temp[16];
+								mainReg[1]=temp[17];
+								mainReg[2]=temp[18];
+								mainReg[3]=temp[19];
+								mainReg[4]=temp[20];
+								mainReg[5]=temp[21];
+								mainReg[6]=temp[22];
+								mainReg[7]=temp[23];
+							end
 						end
 						else begin
-							prox_estado=F;
-							cont=18'b0;
+							estado=C;
+							tempo=64'b0;
 						end
-					end
-				end
-				F:begin															//Máquina 3
-					if(IRDA_RXD) begin								//Estado 1
-						prox_estado=G;
-						cont=cont+1'b1;
-						tempo=18'b0;
 					end
 					else begin
-						prox_estado=F;
+						estado=B;
 					end
 				end
-				G:begin
-					if(IRDA_RXD) begin								//Estado 2
-						prox_estado=G;
-						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
-							prox_estado=A;
-						end
-					end 
-					else begin
-						if(cont<=18'd8) begin
-							prox_estado=F;
-							if(tempo>bitTime) begin //Registra 1
-								mainReg = mainReg << 1;
-								mainReg[0]=1'b1;
-							end
-							else begin	//Registra 0
-								mainReg <= mainReg << 1;
-								mainReg[0]=1'b0;
-							end
-						end
-						
-						if(cont==18'd8) begin
-							prox_estado=H;
-							cont=18'b0;
-						end
-					end
-				end
-				H:begin															//Máquina 4
-					if(IRDA_RXD) begin								//Estado 1
-						prox_estado=I;
-						cont=cont+1'b1;
-						tempo=18'b0;
-					end
-					else begin
-						prox_estado=H;
-					end
-				end
-				I:begin
-					if(IRDA_RXD) begin						//Estado 2
-						prox_estado=I;
-						tempo=tempo+1'b1;
-						if(tempo>infinty) begin
-							prox_estado=A;
-						end
-					end 
-					else begin
-						if(cont<=18'd8) begin
-							prox_estado=H;
-							if(tempo>bitTime) begin //Registra 1
-								invReg = invReg << 1;
-								invReg[0]=1'b1;
-							end
-							else begin	//Registra 0
-								invReg = invReg << 1;
-								invReg=1'b0;
-							end
-						end
-						
-						if(cont==18'd8) begin
-							prox_estado=J;
-						end
-					end
-				end
-				J:begin															//Comparação
-					LEDR0=mainReg[0];
-					LEDR1=mainReg[1];
-					LEDR2=mainReg[2];
-					LEDR3=mainReg[3];
-					LEDR4=mainReg[4];
-					LEDR5=mainReg[5];
-					LEDR6=mainReg[6];
-					LEDR7=mainReg[7];
 				
+				C:begin
+				LEDE1=0;
+					tempo=tempo+1'b1;
+					
 					if(IRDA_RXD) begin
-						prox_estado=A;
+						estado=C;
+						
+						if(tempo>=infinity) begin
+							estado=A;
+						end
+					end
+					else if(tempo>is_a_bit) begin
+						estado=B;
+						
+						if(cont>=2 && cont<=33 && tempo>bitTime) begin
+							temp[cont-2] = 1;
+						end
+						
+						tempo=64'b0;
 					end
 					else begin
-						prox_estado=J;
+						tempo=64'b0;
 					end
 				end
 			endcase
+		end
 endmodule
