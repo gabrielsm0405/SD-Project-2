@@ -1,0 +1,207 @@
+Quartus II 64-Bit
+Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
+12
+1222
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+decoder99
+# storage
+db|sdProject2.(1).cnf
+db|sdProject2.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+decoder99.v
+3d1c55a2866d1a92af59fccba7f5f2e7
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+decoder99:inst2
+}
+# macro_sequence
+
+# end
+# entity
+ULA
+# storage
+db|sdProject2.(2).cnf
+db|sdProject2.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+ula.v
+86f07c10652b174825c06b3ff7ea8e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+On_Off
+10010
+PARAMETER_UNSIGNED_BIN
+USR
+Waiting
+00000
+PARAMETER_UNSIGNED_BIN
+USR
+Def_A
+01111
+PARAMETER_UNSIGNED_BIN
+USR
+Def_B
+10011
+PARAMETER_UNSIGNED_BIN
+USR
+Clear_All
+10000
+PARAMETER_UNSIGNED_BIN
+USR
+OFF
+00000
+PARAMETER_UNSIGNED_BIN
+USR
+}
+# hierarchies {
+ULA:inst1
+}
+# macro_sequence
+
+# end
+# entity
+lastHopeDec
+# storage
+db|sdProject2.(3).cnf
+db|sdProject2.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+lasthopedec.v
+9e188e587bc04953b17f30c7ffd39293
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+INFINITY
+262143
+PARAMETER_SIGNED_DEC
+USR
+LEADCODE
+01
+PARAMETER_UNSIGNED_BIN
+USR
+LEITURA
+10
+PARAMETER_UNSIGNED_BIN
+USR
+inf
+262143
+PARAMETER_SIGNED_DEC
+USR
+leadCodeTimeLow
+230000
+PARAMETER_SIGNED_DEC
+USR
+leadCodeTimeHigh
+210000
+PARAMETER_SIGNED_DEC
+USR
+bitTime
+41500
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+lastHopeDec:inst
+}
+# macro_sequence
+
+# end
+# entity
+main
+# storage
+db|sdProject2.(0).cnf
+db|sdProject2.(0).cnf
+# case_insensitive
+# source_file
+main.bdf
+254cd4f650e455bf4d5e52ad69f2d283
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# complete
+
