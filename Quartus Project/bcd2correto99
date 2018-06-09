@@ -1,4 +1,4 @@
-module decoder198 (a, b, c, d, e, f, g, data,a10,b10,c10,d10,e10,f10,g10);
+module decoder99 (a, b, c, d, e, f, g, data,a10,b10,c10,d10,e10,f10,g10);
 	input[7:0] data;
 	reg [6:0] ss1, ss10;
 	output a,b,c,d,e,f,g,a10,b10,c10,d10,e10,f10,g10;
