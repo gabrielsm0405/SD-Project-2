@@ -1,11 +1,11 @@
 module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);	
-	//Clock padrão de 50Mhz
+	//Clock padrÃ£o de 50Mhz
 	input CLOCK_50, validate;
 	
-	//Valor de entrada que irá definir as ações da máquina
+	//Valor de entrada que irÃ¡ definir as aÃ§Ãµes da mÃ¡quina
 	input [7:0] data;
 	
-	//Possíveis estados para a máquina, além de macros
+	//PossÃ­veis estados para a mÃ¡quina, alÃ©m de macros
 	parameter [7:0] On_Off = 8'd18, Waiting = 8'd0, Def_A = 8'd15, Def_B = 8'd19, 
 	Clear_All = 8'd16, Change_Signal = 8'd12, Sum = 8'd26, Minus = 8'd30;
 	
@@ -15,16 +15,16 @@ module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);
 	//saida do sinal do resultado
 	output reg signalR;
 	
-	//saida do A e do B, e valor de sa�da para o BCD
+	//saida do A e do B, e valor de saída para o BCD
 	output reg [7:0] out_A, out_B, value;
 	
-	//Variável de controle para definir o estado padrão da máquina 
+	//VariÃ¡vel de controle para definir o estado padrÃ£o da mÃ¡quina 
 	reg [3:0] state, editB, editA, clear, off;
 	
-	//Variáveis de controle de 1bit que servem como flags ao longo do programa
+	//VariÃ¡veis de controle de 1bit que servem como flags ao longo do programa
 	reg signalA, signalB, isOn;
 	
-	//Inicia as variáveis de controle como 0 e o valor padrão do estado para desligado 
+	//Inicia as variÃ¡veis de controle como 0 e o valor padrÃ£o do estado para desligado 
 	initial begin
 		state = editA;
 		
@@ -51,15 +51,11 @@ module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);
 	end
 		
 	always @ (negedge validate) begin // begin do clock
-		//Caso o bit de controle alcance a placa, inicia a operação de seleção de estado
+		//Caso o bit de controle alcance a placa, inicia a operaÃ§Ã£o de seleÃ§Ã£o de estado
 		case(data) //begin do case(data)
 			On_Off: begin //Liga/Desliga
 						//Ligar/Apagar o BCD de alguma maneira
 						isOn=~isOn;
-						
-						if(isOn==0) begin
-					
-						end
 					end										
 			Def_A: begin //Zera A e seta valor
 						state <= editA;
@@ -82,7 +78,7 @@ module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);
 								value_A_Dez=8'b0;
 								value_A_Uni=8'b0;
 							end
-							else if(data>=0 && data<=9) begin //Indica que data � um valor num�rio
+							else if(data>=0 && data<=9) begin //Indica que data é um valor numério
 								value_A_Dez=10*value_A_Uni;
 								value_A_Uni=data;
 							end
@@ -104,7 +100,7 @@ module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);
 								value_B_Dez=8'b0;
 								value_B_Uni=8'b0;
 							end
-							else if(data>=0 && data<=9) begin //Indica que data � um valor num�rio
+							else if(data>=0 && data<=9) begin //Indica que data é um valor numério
 								value_B_Dez=10*value_B_Uni;
 								value_B_Uni=data;
 							end
@@ -132,8 +128,8 @@ module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);
 						out_B=value_B_Dez+value_B_Uni;
 					end
 			off: begin
-					out_A<=200;
-					out_B<=200;
+					//out_A<=200;
+					//out_B<=200;
 				 end
 			
 		endcase
@@ -156,8 +152,8 @@ module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);
 			value=~value+1;
 		end
 		
-		if(isOn==0) begin
-			value=200;
-		end
+		//if(isOn==0) begin
+		//	value=200;
+		//end
 	end
 endmodule 
