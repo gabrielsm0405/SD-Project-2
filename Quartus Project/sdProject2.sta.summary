@@ -2,4 +2,148 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Slow 1200mV 85C Model Setup 'ULA2:ulaULA|out_A[1]'
+Slack : -12.519
+TNS   : -194.613
+
+Type  : Slow 1200mV 85C Model Setup 'ULA2:ulaULA|out_B[1]'
+Slack : -12.233
+TNS   : -199.107
+
+Type  : Slow 1200mV 85C Model Setup 'lastHopeDec:dec|okBit'
+Slack : -6.935
+TNS   : -188.001
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : -3.767
+TNS   : -201.034
+
+Type  : Slow 1200mV 85C Model Hold 'ULA2:ulaULA|out_B[1]'
+Slack : -12.734
+TNS   : -184.870
+
+Type  : Slow 1200mV 85C Model Hold 'ULA2:ulaULA|out_A[1]'
+Slack : -12.569
+TNS   : -179.163
+
+Type  : Slow 1200mV 85C Model Hold 'lastHopeDec:dec|okBit'
+Slack : -1.719
+TNS   : -2.467
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.382
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ULA2:ulaULA|out_A[1]'
+Slack : -8.384
+TNS   : -7092.769
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ULA2:ulaULA|out_B[1]'
+Slack : -8.295
+TNS   : -6785.609
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -116.080
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lastHopeDec:dec|okBit'
+Slack : -1.285
+TNS   : -57.825
+
+Type  : Slow 1200mV 0C Model Setup 'ULA2:ulaULA|out_A[1]'
+Slack : -11.526
+TNS   : -180.127
+
+Type  : Slow 1200mV 0C Model Setup 'ULA2:ulaULA|out_B[1]'
+Slack : -11.226
+TNS   : -183.833
+
+Type  : Slow 1200mV 0C Model Setup 'lastHopeDec:dec|okBit'
+Slack : -6.366
+TNS   : -173.385
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -3.353
+TNS   : -176.247
+
+Type  : Slow 1200mV 0C Model Hold 'ULA2:ulaULA|out_B[1]'
+Slack : -11.674
+TNS   : -168.313
+
+Type  : Slow 1200mV 0C Model Hold 'ULA2:ulaULA|out_A[1]'
+Slack : -11.509
+TNS   : -162.595
+
+Type  : Slow 1200mV 0C Model Hold 'lastHopeDec:dec|okBit'
+Slack : -1.529
+TNS   : -2.182
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.333
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ULA2:ulaULA|out_A[1]'
+Slack : -7.775
+TNS   : -6354.298
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ULA2:ulaULA|out_B[1]'
+Slack : -7.694
+TNS   : -6100.459
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -116.080
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lastHopeDec:dec|okBit'
+Slack : -1.285
+TNS   : -57.825
+
+Type  : Fast 1200mV 0C Model Setup 'ULA2:ulaULA|out_A[1]'
+Slack : -5.861
+TNS   : -92.595
+
+Type  : Fast 1200mV 0C Model Setup 'ULA2:ulaULA|out_B[1]'
+Slack : -5.742
+TNS   : -95.771
+
+Type  : Fast 1200mV 0C Model Setup 'lastHopeDec:dec|okBit'
+Slack : -3.113
+TNS   : -76.801
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -1.323
+TNS   : -53.111
+
+Type  : Fast 1200mV 0C Model Hold 'ULA2:ulaULA|out_B[1]'
+Slack : -6.570
+TNS   : -99.027
+
+Type  : Fast 1200mV 0C Model Hold 'ULA2:ulaULA|out_A[1]'
+Slack : -6.497
+TNS   : -96.175
+
+Type  : Fast 1200mV 0C Model Hold 'lastHopeDec:dec|okBit'
+Slack : -1.006
+TNS   : -5.114
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.161
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ULA2:ulaULA|out_A[1]'
+Slack : -4.054
+TNS   : -2824.415
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ULA2:ulaULA|out_B[1]'
+Slack : -3.974
+TNS   : -2627.169
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -96.179
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lastHopeDec:dec|okBit'
+Slack : -1.000
+TNS   : -45.000
+
 ------------------------------------------------------------

@@ -3,11 +3,11 @@ module lastHopeDec(CLOCK_50, IRDA_RXD, okBit, OUT);
 	output reg okBit;
 	output reg[7:0] OUT;
 
-	parameter inf=2'b00;
+	parameter INFINITY=2'b00;
 	parameter LEADCODE=2'b01;
 	parameter LEITURA=2'b10;
 	
-	parameter infinity=262143;
+	parameter inf=262143;
 	parameter leadCodeTimeLow=230000;
 	parameter leadCodeTimeHigh=210000;
 	parameter bitTime=41500;

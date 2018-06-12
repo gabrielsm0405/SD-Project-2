@@ -1,6 +1,6 @@
 Assembler report for sdProject2
-Sat Jun 09 15:01:41 2018
-Quartus II 64-Bit Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
+Mon Jun 11 21:04:28 2018
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
 ---------------------
@@ -10,7 +10,7 @@ Quartus II 64-Bit Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Versio
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/sslp/Desktop/sd/sdProject2.sof
+  5. Assembler Device Options: C:/Users/rjal/Desktop/Quartus Project/sdProject2.sof
   6. Assembler Messages
 
 
@@ -37,9 +37,9 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sat Jun 09 15:01:41 2018 ;
+; Assembler Status      ; Successful - Mon Jun 11 21:04:28 2018 ;
 ; Revision Name         ; sdProject2                            ;
-; Top-level Entity Name ; main                                  ;
+; Top-level Entity Name ; juncao                                ;
 ; Family                ; Cyclone IV E                          ;
 ; Device                ; EP4CE115F29C7                         ;
 +-----------------------+---------------------------------------+
@@ -77,40 +77,40 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+-----------------------------------------+
-; Assembler Generated Files               ;
-+-----------------------------------------+
-; File Name                               ;
-+-----------------------------------------+
-; C:/Users/sslp/Desktop/sd/sdProject2.sof ;
-+-----------------------------------------+
++------------------------------------------------------+
+; Assembler Generated Files                            ;
++------------------------------------------------------+
+; File Name                                            ;
++------------------------------------------------------+
+; C:/Users/rjal/Desktop/Quartus Project/sdProject2.sof ;
++------------------------------------------------------+
 
 
-+-------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/sslp/Desktop/sd/sdProject2.sof ;
-+----------------+--------------------------------------------------+
-; Option         ; Setting                                          ;
-+----------------+--------------------------------------------------+
-; Device         ; EP4CE115F29C7                                    ;
-; JTAG usercode  ; 0xFFFFFFFF                                       ;
-; Checksum       ; 0x005634D8                                       ;
-+----------------+--------------------------------------------------+
++--------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/rjal/Desktop/Quartus Project/sdProject2.sof ;
++----------------+---------------------------------------------------------------+
+; Option         ; Setting                                                       ;
++----------------+---------------------------------------------------------------+
+; Device         ; EP4CE115F29C7                                                 ;
+; JTAG usercode  ; 0xFFFFFFFF                                                    ;
+; Checksum       ; 0x00652CEB                                                    ;
++----------------+---------------------------------------------------------------+
 
 
 +--------------------+
 ; Assembler Messages ;
 +--------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit Assembler
-    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
-    Info: Processing started: Sat Jun 09 15:01:37 2018
+Info: Running Quartus II Assembler
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Mon Jun 11 21:04:22 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off sdProject2 -c sdProject2
 Info: Writing out detailed assembly data for power analysis
 Info: Assembler is generating device programming files
-Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 511 megabytes
-    Info: Processing ended: Sat Jun 09 15:01:41 2018
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus II Assembler was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 440 megabytes
+    Info: Processing ended: Mon Jun 11 21:04:28 2018
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 

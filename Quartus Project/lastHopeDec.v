@@ -89,15 +89,15 @@ module lastHopeDec(CLOCK_50, IRDA_RXD, okBit, OUT);
 	always @(posedge CLOCK_50) begin
 		if (bitCont == 32) begin
 			if (temp[31:24]==~temp[23:16]) begin		
-				OUT<=temp[23:16];
-				okBit<=1;
+				OUT=temp[23:16];
+				okBit=1;
 			end	
 			else begin
-			  okBit<=0;
+			  okBit=0;
 			end
 		end
 		else begin
-			okBit<=0;
+			okBit=0;
 		end
 	end
 endmodule

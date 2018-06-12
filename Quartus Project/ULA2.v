@@ -1,131 +1,163 @@
-module ULA2(CLOCK_50, data, value, validate, out_A, out_B, ON);
+module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);	
 	//Clock padr√£o de 50Mhz
 	input CLOCK_50, validate;
+	
 	//Valor de entrada que ir√° definir as a√ß√µes da m√°quina
 	input [7:0] data;
+	
 	//Poss√≠veis estados para a m√°quina, al√©m de macros
-	parameter [4:0] On_Off = 5'd18, Waiting = 5'd0, Def_A = 5'd15, Def_B = 5'd19, 
-	Clear_All = 5'd16, Change_Signal = 5'd12, Sum = 5'd26, Minus = 5'd30;
+	parameter [7:0] On_Off = 8'd18, Waiting = 8'd0, Def_A = 8'd15, Def_B = 8'd19, 
+	Clear_All = 8'd16, Change_Signal = 8'd12, Sum = 8'd26, Minus = 8'd30;
+	
 	//Valores de A e B
-	reg [7:0] value_A, value_B;
+	reg [7:0] value_A, value_B, value_A_Dez, value_A_Uni, value_B_Dez, value_B_Uni;
+	
+	//saida do sinal do resultado
+	output reg signalR;
+	
 	//saida do A e do B, e valor de saÌda para o BCD
 	output reg [7:0] out_A, out_B, value;
+	
 	//Vari√°vel de controle para definir o estado padr√£o da m√°quina 
-	reg [3:0] state, editB, editA;
+	reg [3:0] state, editB, editA, clear, off;
+	
 	//Vari√°veis de controle de 1bit que servem como flags ao longo do programa
-	reg BCD, dezena_A, unidade_A, unidade_B, dezena_B, isNeg, isPos;
-	//Vari·vel de controle que vai ser ligada ao BCD
-	output reg ON;
+	reg signalA, signalB, isOn;
+	
 	//Inicia as vari√°veis de controle como 0 e o valor padr√£o do estado para desligado 
 	initial begin
-		state = On_Off;
-		value_A = 0;
-		value_B = 0;
-		editA = 4'b0;
-		editB = 4'b1;
-		ON = 0;
-		isNeg = 0;
-		isPos = 1; //Inicia os valores de B como positivos
+		state = editA;
 		
-		//Seta como 0 os par√¢metros de controle para setar as unidades e dezenas de A e B
-		dezena_A = 0;
-		unidade_A = 0;
-		dezena_B = 0;
-		unidade_B = 0;
+		value_A = 200;
+		value_A_Dez=8'b0;
+		value_A_Uni=8'b0;
 		
-		//Define as sa√≠das paralelamente como os valores A e B que ser√£o modificados ao longo do programa
-		out_A <= value_A;
-		out_B <= value_B;
-		value <= value_A + value_B;
+		signalA = 0;
+		signalB = 0;
+		signalR = 0;
+		
+		value_B = 200;
+		value_B_Dez=8'b0;
+		value_B_Uni=8'b0;
+		
+		value=200;
+		
+		isOn=0;
+		
+		editA = 4'b0000;
+		editB = 4'b0001;
+		clear = 4'b0010;
+		off = 4'b0011;
 	end
-	
-
-	always @ (posedge validate) begin // begin do clock
+		
+	always @ (negedge validate) begin // begin do clock
 		//Caso o bit de controle alcance a placa, inicia a opera√ß√£o de sele√ß√£o de estado
 		case(data) //begin do case(data)
 			On_Off: begin //Liga/Desliga
-						ON = ~ON;
 						//Ligar/Apagar o BCD de alguma maneira
-						state <= Clear_All; 
+						isOn=~isOn;
+						
+						if(isOn==0) begin
+					
+						end
 					end										
 			Def_A: begin //Zera A e seta valor
-						value_A <= 0;
-						unidade_A <= 0;
-						dezena_A <= 0;
 						state <= editA;
-						//Caso pressione o bot„o de mudar sinal, inverte o valor de A (Funcional?)
-						if(data == Change_Signal) value_A <= ~ value_A;
 				   end					   
 			Def_B: begin //Zera B e seta valor
-						value_B = 0;
-						unidade_B <= 0;
-						dezena_B <= 0;
 						state <= editB;
-						//Caso pressione o bot„o de mudar sinal, inverte o valor de B (Funcional?)
-						if(data == Change_Signal) value_B <= ~ value_B;
 				   end					   
 			Clear_All: begin //Zera tudo
-						   value_A <= 0;
-						   value_B <= 0;
-						   dezena_A <= 0;
-						   dezena_B <= 0;
-						   unidade_A <= 0;
-						   unidade_B <= 0;
-
-						   //Seta sinal padr„o para B
-						   isNeg <= 0; 
-						   isPos <= 1;
+							state<=clear;
 					   end
-			Sum: begin //Soma
-					if(isPos) begin
-						value_B <= ~value_B;
-						//Inverte o valor de B (no caso de pos pra neg) e muda as vari·veis de controle para indicar que o n˙mero agora È negativo
-						isPos <= 0;
-						isNeg <= 1;
-					end
-				 end
-
-			Minus: begin //SubtraÁ„o
-				     if(isNeg) begin
-				     	//Inverte o valor de B (no caso de neg pra pos) e muda as vari·veis de controle para indicar que o n˙mero agora È negativo
-				     	value_B <= ~value_B;
-				     end
-				   end
-
 
 		endcase //end do case(data)
 	end //end do clock
 	
-	always @(posedge CLOCK_50) begin
+	always @(negedge validate) begin
 		case(state) //begin do case(state)
 			editA: begin //begin-edit-A
-					   if(~unidade_A || ~dezena_A) begin //begin-if
-							if(data <= 9) begin //Indica que data È um valor numÈrio
-								if(~unidade_A) begin
-									value_A <= data; 
-									unidade_A = 1; 
+						if(isOn) begin
+							if(data==Def_A) begin
+								value_A_Dez=8'b0;
+								value_A_Uni=8'b0;
+							end
+							else if(data>=0 && data<=9) begin //Indica que data È um valor numÈrio
+								value_A_Dez=10*value_A_Uni;
+								value_A_Uni=data;
+							end
+							else if(data==Change_Signal) begin
+								if(signalA==0) begin
+									signalA=1;
 								end
-								else if (unidade_A && ~dezena_A) begin //Caso tenha inserido a unidade mas n„o a dezena
-									value_A <= 10 * value_A + data;
-									dezena_A = 1;
+								else begin 
+									signalA=0;
 								end
-							end 
-						end //end-if
+							end
+							
+							out_A<=value_A_Dez+value_A_Uni;
+						end
 				   end//end-edit-A
 			editB: begin
-					if(~unidade_B && ~dezena_B) begin //begin-if
-							if(data <= 9) begin //Indica que data È um valor n˙mero
-								if(~unidade_B) begin
-									value_B <= data;
-									unidade_B <= 1;
+						if(isOn) begin
+							if(data==Def_B) begin
+								value_B_Dez=8'b0;
+								value_B_Uni=8'b0;
+							end
+							else if(data>=0 && data<=9) begin //Indica que data È um valor numÈrio
+								value_B_Dez=10*value_B_Uni;
+								value_B_Uni=data;
+							end
+							else if(data==Change_Signal) begin
+								if(signalB==0) begin
+									signalB=1;
 								end
-								else if(unidade_B && ~dezena_B) begin //Caso tenha inserido a unidade mas n„o a dezena
-									value_B <= 10 * value_B + data;
-									dezena_B <= 1;
+								else begin 
+									signalB=0;
 								end
-							end 
-						end //end-if
+							end
+							
+							out_B<=value_B_Dez+value_B_Uni;
+						end
 				   end
+			clear: begin
+						value_A_Dez=8'b0;
+						value_A_Uni=8'b0;
+						value_B_Dez=8'b0;
+						value_B_Uni=8'b0;
+						signalA=0;
+						signalB=0;
+						
+						out_A=value_A_Dez+value_A_Uni;
+						out_B=value_B_Dez+value_B_Uni;
+					end
+			off: begin
+					out_A<=200;
+					out_B<=200;
+				 end
+			
 		endcase
+	end
+	
+	always begin
+		value=out_A*(1-2*signalA)+out_B*(1-2*signalB);
+		
+		if(value==0) begin
+			signalR<=0;
+		end
+		else if(out_A>=out_B) begin
+			signalR<=signalA;
+		end
+		else begin
+			signalR<=signalB;
+		end	
+		
+		if(signalR) begin
+			value=~value+1;
+		end
+		
+		if(isOn==0) begin
+			value=200;
+		end
 	end
 endmodule 

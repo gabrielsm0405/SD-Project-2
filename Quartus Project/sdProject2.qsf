@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY main
+set_global_assignment -name TOP_LEVEL_ENTITY juncao
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:01:21  JUNE 09, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -51,26 +51,63 @@ set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_location_assignment PIN_Y2 -to CLOCK_50
 set_location_assignment PIN_Y15 -to IRDA_RXD
 set_global_assignment -name MISC_FILE "C:/Users/sslp/Desktop/sd/sdProject2.dpf"
-set_global_assignment -name VERILOG_FILE ULA.v
-set_global_assignment -name BDF_FILE main.bdf
-set_global_assignment -name VERILOG_FILE decoder99.v
+set_global_assignment -name VERILOG_FILE bcd2correto99.v
+set_global_assignment -name MISC_FILE "C:/Users/rjal/Desktop/Quartus Project/sdProject2.dpf"
+set_global_assignment -name VERILOG_FILE juncao.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-set_location_assignment PIN_AD17 -to Adeza
-set_location_assignment PIN_AE17 -to Adezb
-set_location_assignment PIN_AG17 -to Adezc
-set_location_assignment PIN_AH17 -to Adezd
-set_location_assignment PIN_AF17 -to Adeze
-set_location_assignment PIN_AG18 -to Adezf
-set_location_assignment PIN_AA14 -to Adezg
-set_location_assignment PIN_AA17 -to Aunia
-set_location_assignment PIN_AB16 -to Aunib
-set_location_assignment PIN_AA16 -to Aunic
-set_location_assignment PIN_AB17 -to Aunid
-set_location_assignment PIN_AB15 -to Aunie
-set_location_assignment PIN_AA15 -to Aunif
-set_location_assignment PIN_AC17 -to Aunig
-set_location_assignment PIN_H15 -to pin_name
+set_location_assignment PIN_AA14 -to HEXDEZA[0]
+set_location_assignment PIN_AG18 -to HEXDEZA[1]
+set_location_assignment PIN_AF17 -to HEXDEZA[2]
+set_location_assignment PIN_AH17 -to HEXDEZA[3]
+set_location_assignment PIN_AG17 -to HEXDEZA[4]
+set_location_assignment PIN_AE17 -to HEXDEZA[5]
+set_location_assignment PIN_AD17 -to HEXDEZA[6]
+set_location_assignment PIN_AC17 -to HEXUNIA[0]
+set_location_assignment PIN_AA15 -to HEXUNIA[1]
+set_location_assignment PIN_AB15 -to HEXUNIA[2]
+set_location_assignment PIN_AB17 -to HEXUNIA[3]
+set_location_assignment PIN_AA16 -to HEXUNIA[4]
+set_location_assignment PIN_AB16 -to HEXUNIA[5]
+set_location_assignment PIN_AA17 -to HEXUNIA[6]
+set_global_assignment -name VERILOG_FILE ULA2.v
+set_location_assignment PIN_AD18 -to HEXDEZB[6]
+set_location_assignment PIN_AC18 -to HEXDEZB[5]
+set_location_assignment PIN_AB18 -to HEXDEZB[4]
+set_location_assignment PIN_AH19 -to HEXDEZB[3]
+set_location_assignment PIN_AG19 -to HEXDEZB[2]
+set_location_assignment PIN_AF18 -to HEXDEZB[1]
+set_location_assignment PIN_AH18 -to HEXDEZB[0]
+set_location_assignment PIN_AB19 -to HEXUNIB[6]
+set_location_assignment PIN_AA19 -to HEXUNIB[5]
+set_location_assignment PIN_AG21 -to HEXUNIB[4]
+set_location_assignment PIN_AH21 -to HEXUNIB[3]
+set_location_assignment PIN_AE19 -to HEXUNIB[2]
+set_location_assignment PIN_AF19 -to HEXUNIB[1]
+set_location_assignment PIN_AE18 -to HEXUNIB[0]
+set_global_assignment -name VERILOG_FILE bcd198correto.v
+set_location_assignment PIN_G18 -to HEXUNIR[6]
+set_location_assignment PIN_F22 -to HEXUNIR[5]
+set_location_assignment PIN_E17 -to HEXUNIR[4]
+set_location_assignment PIN_L26 -to HEXUNIR[3]
+set_location_assignment PIN_L25 -to HEXUNIR[2]
+set_location_assignment PIN_J22 -to HEXUNIR[1]
+set_location_assignment PIN_H22 -to HEXUNIR[0]
+set_location_assignment PIN_M24 -to HEXDEZR[6]
+set_location_assignment PIN_Y22 -to HEXDEZR[5]
+set_location_assignment PIN_W21 -to HEXDEZR[4]
+set_location_assignment PIN_W22 -to HEXDEZR[3]
+set_location_assignment PIN_W25 -to HEXDEZR[2]
+set_location_assignment PIN_U23 -to HEXDEZR[1]
+set_location_assignment PIN_U24 -to HEXDEZR[0]
+set_location_assignment PIN_AA25 -to HEXCENR[6]
+set_location_assignment PIN_AA26 -to HEXCENR[5]
+set_location_assignment PIN_Y25 -to HEXCENR[4]
+set_location_assignment PIN_W26 -to HEXCENR[3]
+set_location_assignment PIN_Y26 -to HEXCENR[2]
+set_location_assignment PIN_W27 -to HEXCENR[1]
+set_location_assignment PIN_W28 -to HEXCENR[0]
+set_location_assignment PIN_Y19 -to SOUTR
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

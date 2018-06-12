@@ -1,0 +1,13 @@
+
+State Machine - |juncao|ULA2:ulaULA|state
+Name state.0011 state.0010 state.0001 state.0000 
+state.0000 0 0 0 0 
+state.0001 0 0 1 1 
+state.0010 0 1 0 1 
+state.0011 1 0 0 1 
+
+State Machine - |juncao|lastHopeDec:dec|estado
+Name estado.INFINITY estado.LEITURA estado.LEADCODE 
+estado.INFINITY 0 0 0 
+estado.LEADCODE 1 0 1 
+estado.LEITURA 1 1 0 

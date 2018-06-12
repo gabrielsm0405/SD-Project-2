@@ -1,5 +1,5 @@
-Quartus II 64-Bit
-Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
+Quartus II
+Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 12
 1222
 OFF
@@ -20,42 +20,6 @@ VHSM_ON
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
 # entity
-decoder99
-# storage
-db|sdProject2.(1).cnf
-db|sdProject2.(1).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-decoder99.v
-3d1c55a2866d1a92af59fccba7f5f2e7
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-decoder99:inst2
-}
-# macro_sequence
-
-# end
-# entity
 ULA
 # storage
 db|sdProject2.(2).cnf
@@ -67,7 +31,7 @@ ON
 # case_sensitive
 # source_file
 ula.v
-86f07c10652b174825c06b3ff7ea8e
+b19d56ccbf773d97bfd6c3c65bea41
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -111,8 +75,22 @@ OFF
 PARAMETER_UNSIGNED_BIN
 USR
 }
-# hierarchies {
-ULA:inst1
+# macro_sequence
+
+# end
+# entity
+main
+# storage
+db|sdProject2.(3).cnf
+db|sdProject2.(3).cnf
+# case_insensitive
+# source_file
+main.bdf
+54ea7ad3ee2fcadd12bdac5accee55
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
 }
 # macro_sequence
 
@@ -120,8 +98,8 @@ ULA:inst1
 # entity
 lastHopeDec
 # storage
-db|sdProject2.(3).cnf
-db|sdProject2.(3).cnf
+db|sdProject2.(0).cnf
+db|sdProject2.(0).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -129,7 +107,7 @@ ON
 # case_sensitive
 # source_file
 lasthopedec.v
-9e188e587bc04953b17f30c7ffd39293
+4a6082c6c0922bd7b86390e0297577
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -149,56 +127,1411 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 }
 # user_parameter {
 INFINITY
-262143
-PARAMETER_SIGNED_DEC
-USR
+00
+PARAMETER_UNSIGNED_BIN
+DEF
 LEADCODE
 01
 PARAMETER_UNSIGNED_BIN
-USR
+DEF
 LEITURA
 10
 PARAMETER_UNSIGNED_BIN
-USR
+DEF
 inf
 262143
 PARAMETER_SIGNED_DEC
-USR
+DEF
 leadCodeTimeLow
 230000
 PARAMETER_SIGNED_DEC
-USR
+DEF
 leadCodeTimeHigh
 210000
 PARAMETER_SIGNED_DEC
-USR
+DEF
 bitTime
 41500
 PARAMETER_SIGNED_DEC
-USR
+DEF
 }
 # hierarchies {
-lastHopeDec:inst
+lastHopeDec:dec
 }
 # macro_sequence
 
 # end
 # entity
-main
+lpm_mult
 # storage
-db|sdProject2.(0).cnf
-db|sdProject2.(0).cnf
+db|sdProject2.(7).cnf
+db|sdProject2.(7).cnf
 # case_insensitive
 # source_file
-main.bdf
-254cd4f650e455bf4d5e52ad69f2d283
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
+|altera|91sp2|quartus|libraries|megafunctions|lpm_mult.tdf
+6ec8d746e6da2f4aae33fe9d4e4dfb1
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+LPM_WIDTHA
+8
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHB
+2
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHP
+10
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHR
+10
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHS
+1
+PARAMETER_UNKNOWN
+USR
+LPM_REPRESENTATION
+SIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+LATENCY
+0
+PARAMETER_UNKNOWN
+DEF
+INPUT_A_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+INPUT_B_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+USE_EAB
+OFF
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+DEVICE_FAMILY
+Cyclone IV E
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+APEX20K_TECHNOLOGY_MAPPER
+LUT
+TECH_MAPPER_APEX20K
+USR
+DEDICATED_MULTIPLIER_CIRCUITRY
 AUTO
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+NOTHING
+PARAMETER_UNKNOWN
+DEF
+INPUT_A_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+INPUT_B_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+USE_AHDL_IMPLEMENTATION
+OFF
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+datab1
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+datab0
+-1
+2
+}
+# macro_sequence
+
+# end
+# entity
+multcore
+# storage
+db|sdProject2.(8).cnf
+db|sdProject2.(8).cnf
+# case_insensitive
+# source_file
+|altera|91sp2|quartus|libraries|megafunctions|multcore.tdf
+1564b1a46b204e94cfd2b2e084ea47
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+widtha
+8
+PARAMETER_UNKNOWN
+USR
+widthb
+2
+PARAMETER_UNKNOWN
+USR
+LPM_REPRESENTATION
+SIGNED
+PARAMETER_UNKNOWN
+USR
+LATENCY
+1
+PARAMETER_UNKNOWN
+USR
+ONE_INPUT_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+USE_EAB
+OFF
+PARAMETER_UNKNOWN
+USR
+MAXIMIZE_SPEED
+6
+PARAMETER_UNKNOWN
+USR
+OP_MODE
+0
+PARAMETER_UNKNOWN
+USR
+DEVICE_FAMILY
+Cyclone IV E
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+DEDICATED_MULTIPLIER_CIRCUITRY
+YES
+PARAMETER_UNKNOWN
+DEF
+SUB_DEDICATED_MULTIPLIER_CIRCUITRY
+NO
+PARAMETER_UNKNOWN
+USR
+DSP_BLOCK_BALANCING
+AUTO
+PARAMETER_UNKNOWN
+USR
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+mul_lfrg
+# storage
+db|sdProject2.(9).cnf
+db|sdProject2.(9).cnf
+# case_insensitive
+# source_file
+|altera|91sp2|quartus|libraries|megafunctions|mul_lfrg.tdf
+a575beff5f3a191682710257c94a563
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+WIDTH
+7
+PARAMETER_UNKNOWN
+USR
+BIT0_OF_SELECT_IS_GND
+TRUE
+PARAMETER_UNKNOWN
+USR
+BIT2_OF_SELECT_IS_SIGN_EXT
+FALSE
+PARAMETER_UNKNOWN
+DEF
+BIT0_OF_DATA_IS_GND
+FALSE
+PARAMETER_UNKNOWN
+DEF
+INPUTS_ARE_IDENTICAL
+FALSE
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+select6_2
+-1
+3
+select6_1
+-1
+3
+select6_0
+-1
+3
+select5_2
+-1
+3
+select5_1
+-1
+3
+select5_0
+-1
+3
+select4_2
+-1
+3
+select4_1
+-1
+3
+select4_0
+-1
+3
+select3_2
+-1
+3
+select3_1
+-1
+3
+select3_0
+-1
+3
+select2_2
+-1
+3
+select2_1
+-1
+3
+select2_0
+-1
+3
+select1_2
+-1
+3
+select1_1
+-1
+3
+select1_0
+-1
+3
+select0_2
+-1
+3
+select0_1
+-1
+3
+select0_0
+-1
+3
+out_bit6
+-1
+3
+out_bit5
+-1
+3
+out_bit4
+-1
+3
+out_bit3
+-1
+3
+out_bit2
+-1
+3
+out_bit1
+-1
+3
+out_bit0
+-1
+3
+data6_1
+-1
+3
+data6_0
+-1
+3
+data5_1
+-1
+3
+data5_0
+-1
+3
+data4_1
+-1
+3
+data4_0
+-1
+3
+data3_1
+-1
+3
+data3_0
+-1
+3
+data2_1
+-1
+3
+data2_0
+-1
+3
+data1_1
+-1
+3
+data1_0
+-1
+3
+data0_1
+-1
+3
+data0_0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+mpar_add
+# storage
+db|sdProject2.(10).cnf
+db|sdProject2.(10).cnf
+# case_insensitive
+# source_file
+|altera|91sp2|quartus|libraries|megafunctions|mpar_add.tdf
+7cbf24afda73e2f88a1def44e2e3f4c0
+7
+# user_parameter {
+size
+11
+PARAMETER_UNKNOWN
+USR
+width
+2
+PARAMETER_UNKNOWN
+USR
+REPRESENTATION
+SIGNED
+PARAMETER_UNKNOWN
+USR
+LEVEL
+2
+PARAMETER_UNKNOWN
+USR
+TOT_LEVELS
+3
+PARAMETER_UNKNOWN
+USR
+STAGE
+1
+PARAMETER_UNKNOWN
+USR
+TOT_STAGES
+2
+PARAMETER_UNKNOWN
+USR
+INT_LATENCY
+1
+PARAMETER_UNKNOWN
+USR
+PREV_SING_SIZE
+11
+PARAMETER_UNKNOWN
+USR
+BOOTH_ADDER
+YES
+PARAMETER_UNKNOWN
+USR
+CREATE_MS_BOOTH_ADDER
+NO
+PARAMETER_UNKNOWN
+DEF
+MPARADD_OP_MODE
+0
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+data1_9
+-1
+3
+data1_8
+-1
+3
+data1_7
+-1
+3
+data1_6
+-1
+3
+data1_5
+-1
+3
+data1_4
+-1
+3
+data1_3
+-1
+3
+data1_2
+-1
+3
+data1_10
+-1
+3
+data1_1
+-1
+3
+data1_0
+-1
+3
+data0_9
+-1
+3
+data0_8
+-1
+3
+data0_7
+-1
+3
+data0_6
+-1
+3
+data0_5
+-1
+3
+data0_4
+-1
+3
+data0_3
+-1
+3
+data0_2
+-1
+3
+data0_1
+-1
+3
+data0_0
+-1
+3
+data0_10
+-1
+1
+}
+# macro_sequence
+
+# end
+# entity
+lpm_add_sub
+# storage
+db|sdProject2.(11).cnf
+db|sdProject2.(11).cnf
+# case_insensitive
+# source_file
+|altera|91sp2|quartus|libraries|megafunctions|lpm_add_sub.tdf
+74821f847e545ce9ad847cbce0ef11
+7
+# user_parameter {
+LPM_WIDTH
+11
+PARAMETER_UNKNOWN
+USR
+LPM_REPRESENTATION
+SIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_DIRECTION
+DEFAULT
+PARAMETER_UNKNOWN
+DEF
+ONE_INPUT_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+USR
+MAXIMIZE_SPEED
+6
+PARAMETER_UNKNOWN
+USR
+REGISTERED_AT_END
+1
+PARAMETER_UNKNOWN
+USR
+OPTIMIZE_FOR_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+USE_CS_BUFFERS
+1
+PARAMETER_UNKNOWN
+DEF
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN_LENGTH
+48
+CARRY_CHAIN_LENGTH
+USR
+DEVICE_FAMILY
+Cyclone IV E
+PARAMETER_UNKNOWN
+USR
+USE_WYS
+OFF
+PARAMETER_UNKNOWN
+DEF
+STYLE
+FAST
+PARAMETER_UNKNOWN
+USR
+CBXI_PARAMETER
+add_sub_ngh
+PARAMETER_UNKNOWN
+USR
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result10
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab9
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab10
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa9
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa10
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cin
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_ngh
+# storage
+db|sdProject2.(12).cnf
+db|sdProject2.(12).cnf
+# case_insensitive
+# source_file
+db|add_sub_ngh.tdf
+74f112ce7c6b5a16c36c7817ba6da2f3
+7
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result10
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab9
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab10
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa9
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa10
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cin
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+mul_lfrg
+# storage
+db|sdProject2.(13).cnf
+db|sdProject2.(13).cnf
+# case_insensitive
+# source_file
+|altera|91sp2|quartus|libraries|megafunctions|mul_lfrg.tdf
+a575beff5f3a191682710257c94a563
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+WIDTH
+1
+PARAMETER_UNKNOWN
+USR
+BIT0_OF_SELECT_IS_GND
+TRUE
+PARAMETER_UNKNOWN
+USR
+BIT2_OF_SELECT_IS_SIGN_EXT
+FALSE
+PARAMETER_UNKNOWN
+DEF
+BIT0_OF_DATA_IS_GND
+TRUE
+PARAMETER_UNKNOWN
+USR
+INPUTS_ARE_IDENTICAL
+FALSE
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+select0_2
+-1
+3
+select0_1
+-1
+3
+select0_0
+-1
+3
+out_bit0
+-1
+3
+data0_1
+-1
+3
+data0_0
+-1
+1
+}
+# macro_sequence
+
+# end
+# entity
+mul_lfrg
+# storage
+db|sdProject2.(14).cnf
+db|sdProject2.(14).cnf
+# case_insensitive
+# source_file
+|altera|91sp2|quartus|libraries|megafunctions|mul_lfrg.tdf
+a575beff5f3a191682710257c94a563
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+WIDTH
+1
+PARAMETER_UNKNOWN
+USR
+BIT0_OF_SELECT_IS_GND
+TRUE
+PARAMETER_UNKNOWN
+USR
+BIT2_OF_SELECT_IS_SIGN_EXT
+FALSE
+PARAMETER_UNKNOWN
+DEF
+BIT0_OF_DATA_IS_GND
+FALSE
+PARAMETER_UNKNOWN
+DEF
+INPUTS_ARE_IDENTICAL
+TRUE
+PARAMETER_UNKNOWN
+USR
+}
+# used_port {
+select0_2
+-1
+3
+select0_1
+-1
+3
+select0_0
+-1
+3
+out_bit0
+-1
+3
+data0_1
+-1
+3
+data0_0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+altshift
+# storage
+db|sdProject2.(15).cnf
+db|sdProject2.(15).cnf
+# case_insensitive
+# source_file
+|altera|91sp2|quartus|libraries|megafunctions|altshift.tdf
+f9c48e01ed05093ffb6fc0cfdb46bd
+7
+# user_parameter {
+WIDTH
+10
+PARAMETER_UNKNOWN
+USR
+DEPTH
+0
+PARAMETER_UNKNOWN
+USR
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+data9
+-1
+3
+data8
+-1
+3
+data7
+-1
+3
+data6
+-1
+3
+data5
+-1
+3
+data4
+-1
+3
+data3
+-1
+3
+data2
+-1
+3
+data1
+-1
+3
+data0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+juncao
+# storage
+db|sdProject2.(1).cnf
+db|sdProject2.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+juncao.v
+c259bcbe5783eadc37aa65bb135151a
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
 }
 # hierarchies {
 |
+}
+# macro_sequence
+
+# end
+# entity
+decoder99
+# storage
+db|sdProject2.(5).cnf
+db|sdProject2.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+bcd2correto99.v
+d916f9c9bdc7a7249064a4f0f2a75e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+decoder99:bcdA
+decoder99:bcdB
+}
+# macro_sequence
+
+# end
+# entity
+decoder198
+# storage
+db|sdProject2.(6).cnf
+db|sdProject2.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+bcd198correto.v
+ef42c3d63b74aa304fa47281a54d5615
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+decoder198:comb_3
+}
+# macro_sequence
+
+# end
+# entity
+ULA2
+# storage
+db|sdProject2.(4).cnf
+db|sdProject2.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+ula2.v
+c73925d667eebda19aa19a4ef44be656
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+On_Off
+00010010
+PARAMETER_UNSIGNED_BIN
+DEF
+Waiting
+00000000
+PARAMETER_UNSIGNED_BIN
+DEF
+Def_A
+00001111
+PARAMETER_UNSIGNED_BIN
+DEF
+Def_B
+00010011
+PARAMETER_UNSIGNED_BIN
+DEF
+Clear_All
+00010000
+PARAMETER_UNSIGNED_BIN
+DEF
+Change_Signal
+00001100
+PARAMETER_UNSIGNED_BIN
+DEF
+Sum
+00011010
+PARAMETER_UNSIGNED_BIN
+DEF
+Minus
+00011110
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# hierarchies {
+ULA2:ulaULA
 }
 # macro_sequence
 
