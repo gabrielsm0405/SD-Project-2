@@ -1,10 +1,14 @@
-module decoder99 (UNI, data, DEZ);
+module decoder99 (UNI, data, DEZ, signalIN, signalOUT);
 	input[7:0] data;
+	input signalIN;
 	
+	output reg signalOUT;
 	output reg[6:0] UNI, DEZ;
 		
 	always begin
-		if(data>199) begin
+		signalOUT <= signalIN;
+		
+		if(data==100) begin
 			DEZ=7'b1111111;
 			UNI=7'b1111111;
 		end

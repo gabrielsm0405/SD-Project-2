@@ -1,5 +1,5 @@
-Quartus II
-Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+Quartus II 64-Bit
+Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
 12
 1222
 OFF
@@ -20,86 +20,10 @@ VHSM_ON
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
 # entity
-ULA
-# storage
-db|sdProject2.(2).cnf
-db|sdProject2.(2).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-ula.v
-b19d56ccbf773d97bfd6c3c65bea41
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-On_Off
-10010
-PARAMETER_UNSIGNED_BIN
-USR
-Waiting
-00000
-PARAMETER_UNSIGNED_BIN
-USR
-Def_A
-01111
-PARAMETER_UNSIGNED_BIN
-USR
-Def_B
-10011
-PARAMETER_UNSIGNED_BIN
-USR
-Clear_All
-10000
-PARAMETER_UNSIGNED_BIN
-USR
-OFF
-00000
-PARAMETER_UNSIGNED_BIN
-USR
-}
-# macro_sequence
-
-# end
-# entity
-main
-# storage
-db|sdProject2.(3).cnf
-db|sdProject2.(3).cnf
-# case_insensitive
-# source_file
-main.bdf
-54ea7ad3ee2fcadd12bdac5accee55
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# macro_sequence
-
-# end
-# entity
 lastHopeDec
 # storage
-db|sdProject2.(0).cnf
-db|sdProject2.(0).cnf
+db|sdProject2.(1).cnf
+db|sdProject2.(1).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -162,10 +86,83 @@ lastHopeDec:dec
 
 # end
 # entity
+decoder99
+# storage
+db|sdProject2.(3).cnf
+db|sdProject2.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+bcd2correto99.v
+d616aec3c65f5e1d3663dc4d3cdd19b
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+decoder99:bcdA
+decoder99:bcdB
+}
+# macro_sequence
+
+# end
+# entity
+decoder198
+# storage
+db|sdProject2.(4).cnf
+db|sdProject2.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+bcd198correto.v
+803839c4a9a9ab6e9470302d2cdf2
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+decoder198:bcdR
+}
+# macro_sequence
+
+# end
+# entity
 lpm_mult
 # storage
-db|sdProject2.(7).cnf
-db|sdProject2.(7).cnf
+db|sdProject2.(5).cnf
+db|sdProject2.(5).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|lpm_mult.tdf
@@ -336,8 +333,8 @@ datab0
 # entity
 multcore
 # storage
-db|sdProject2.(8).cnf
-db|sdProject2.(8).cnf
+db|sdProject2.(6).cnf
+db|sdProject2.(6).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|multcore.tdf
@@ -481,8 +478,8 @@ dataa0
 # entity
 mul_lfrg
 # storage
-db|sdProject2.(9).cnf
-db|sdProject2.(9).cnf
+db|sdProject2.(7).cnf
+db|sdProject2.(7).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|mul_lfrg.tdf
@@ -660,8 +657,8 @@ data0_0
 # entity
 mpar_add
 # storage
-db|sdProject2.(10).cnf
-db|sdProject2.(10).cnf
+db|sdProject2.(8).cnf
+db|sdProject2.(8).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|mpar_add.tdf
@@ -821,8 +818,8 @@ data0_10
 # entity
 lpm_add_sub
 # storage
-db|sdProject2.(11).cnf
-db|sdProject2.(11).cnf
+db|sdProject2.(9).cnf
+db|sdProject2.(9).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|lpm_add_sub.tdf
@@ -1016,12 +1013,12 @@ cin
 # entity
 add_sub_ngh
 # storage
-db|sdProject2.(12).cnf
-db|sdProject2.(12).cnf
+db|sdProject2.(10).cnf
+db|sdProject2.(10).cnf
 # case_insensitive
 # source_file
 db|add_sub_ngh.tdf
-74f112ce7c6b5a16c36c7817ba6da2f3
+2d5c2f7a4dd2fd2b26ffb06b325dbd88
 7
 # used_port {
 result9
@@ -1133,8 +1130,8 @@ cin
 # entity
 mul_lfrg
 # storage
-db|sdProject2.(13).cnf
-db|sdProject2.(13).cnf
+db|sdProject2.(11).cnf
+db|sdProject2.(11).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|mul_lfrg.tdf
@@ -1204,8 +1201,8 @@ data0_0
 # entity
 mul_lfrg
 # storage
-db|sdProject2.(14).cnf
-db|sdProject2.(14).cnf
+db|sdProject2.(12).cnf
+db|sdProject2.(12).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|mul_lfrg.tdf
@@ -1275,8 +1272,8 @@ data0_0
 # entity
 altshift
 # storage
-db|sdProject2.(15).cnf
-db|sdProject2.(15).cnf
+db|sdProject2.(13).cnf
+db|sdProject2.(13).cnf
 # case_insensitive
 # source_file
 |altera|91sp2|quartus|libraries|megafunctions|altshift.tdf
@@ -1360,8 +1357,8 @@ data0
 # entity
 juncao
 # storage
-db|sdProject2.(1).cnf
-db|sdProject2.(1).cnf
+db|sdProject2.(0).cnf
+db|sdProject2.(0).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -1369,7 +1366,7 @@ ON
 # case_sensitive
 # source_file
 juncao.v
-c259bcbe5783eadc37aa65bb135151a
+f7354b33d77ee6ad9d617c8497bac6
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -1394,83 +1391,10 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 
 # end
 # entity
-decoder99
-# storage
-db|sdProject2.(5).cnf
-db|sdProject2.(5).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-bcd2correto99.v
-d916f9c9bdc7a7249064a4f0f2a75e
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-decoder99:bcdA
-decoder99:bcdB
-}
-# macro_sequence
-
-# end
-# entity
-decoder198
-# storage
-db|sdProject2.(6).cnf
-db|sdProject2.(6).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-bcd198correto.v
-ef42c3d63b74aa304fa47281a54d5615
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-decoder198:comb_3
-}
-# macro_sequence
-
-# end
-# entity
 ULA2
 # storage
-db|sdProject2.(4).cnf
-db|sdProject2.(4).cnf
+db|sdProject2.(2).cnf
+db|sdProject2.(2).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -1478,7 +1402,7 @@ ON
 # case_sensitive
 # source_file
 ula2.v
-c73925d667eebda19aa19a4ef44be656
+30493e12fc59ef96556bac661ff31abb
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT

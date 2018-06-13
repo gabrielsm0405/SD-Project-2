@@ -1,4 +1,4 @@
-module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);	
+module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR, signalA, signalB, opr);	
 	//Clock padrÃ£o de 50Mhz
 	input CLOCK_50, validate;
 	
@@ -13,144 +13,214 @@ module ULA2(CLOCK_50, data, value, validate, out_A, out_B, signalR);
 	reg [7:0] value_A_Dez, value_A_Uni, value_B_Dez, value_B_Uni;
 	
 	//saida do sinal do resultado
-	output reg signalR;
+	output reg signalR, signalA, signalB, opr;
 	
 	//saida do A e do B, e valor de saída para o BCD
 	output reg [7:0] out_A, out_B, value;
+	reg[7:0] out_AFake, out_BFake;
 	
 	//VariÃ¡vel de controle para definir o estado padrÃ£o da mÃ¡quina 
-	reg [3:0] state, editB, editA, clear;
+	reg [3:0] state, editB, editA, clear, off;
 	
 	//VariÃ¡veis de controle de 1bit que servem como flags ao longo do programa
-	reg signalA, signalB, isOn;
+	reg isOn, fakeSignalB, blink;
 	
+	reg[63:0] tempo;
 	//Inicia as variÃ¡veis de controle como 0 e o valor padrÃ£o do estado para desligado 
 	initial begin
-		state = clear;
+		state = off;
+		
+		blink=0;
 		
 		value_A_Dez=8'b0;
 		value_A_Uni=8'b0;
 		signalA = 0;
-		out_A = 200;
+		out_A = 100;
+		out_AFake=100;
 		
 		value_B_Dez=8'b0;
 		value_B_Uni=8'b0;
 		signalB = 0;
-		out_B = 200;
+		fakeSignalB = 0;
+		out_B = 100;
+		out_BFake=100;
 		
 		value=200;
 		signalR = 0;
 		
 		isOn=0;
 		
+		opr=0;
+		
 		editA = 4'b0000;
 		editB = 4'b0001;
 		clear = 4'b0010;
+		off = 4'b0011;
+		
+		tempo = 64'b0;
 	end
 		
-	always @ (negedge validate) begin // begin do clock
+	always @ (posedge validate) begin // begin do clock
 		//Caso o bit de controle alcance a placa, inicia a operaÃ§Ã£o de seleÃ§Ã£o de estado
 		case(data) //begin do case(data)
 			On_Off: begin //Liga/Desliga
-						isOn<=~isOn;
+						if(!isOn) begin
+							state<=clear;
+							isOn<=1;
+						end
+						else begin
+							state<=off;
+							isOn<=0;
+							opr<=0;
+						end
 				end										
 			Def_A: begin //Zera A e seta valor
-						state <= editA;
+						if(isOn) begin
+							state <= editA;
+						end
 				end					   
 			Def_B: begin //Zera B e seta valor
-						state <= editB;
+						if(isOn) begin
+							state <= editB;
+						end
 				end					   
 			Clear_All: begin //Zera tudo
-						state<=clear;
+						if(isOn) begin
+							state<=clear;
+						end
 				end
+				
+			Sum: begin
+				if(isOn) begin
+					opr<=0;
+				end
+			end
+			
+			Minus: begin
+				if(isOn) begin
+					opr<=1;
+				end
+			end
 
 		endcase //end do case(data)
 	end //end do clock
 	
 	always @(negedge validate) begin
-		if(isOn) begin
-			case(state) //begin do case(state)
-				editA: begin //begin-edit-A
-						if(data==Def_A) begin
-							value_A_Dez=8'b0;
-							value_A_Uni=8'b0;
-						end
-						else if(data>=0 && data<=9) begin //Indica que data é um valor numério
-							value_A_Dez=10*value_A_Uni;
-							value_A_Uni=data;
-						end
-						else if(data==Change_Signal) begin
-							if(signalA==0) begin
-								signalA=1;
-							end
-							else begin 
-								signalA=0;
-							end
-						end
-
-						out_A<=value_A_Dez+value_A_Uni;
-					   end//end-edit-A
-				editB: begin
-						if(data==Def_B) begin
-							value_B_Dez=8'b0;
-							value_B_Uni=8'b0;
-						end
-						else if(data>=0 && data<=9) begin //Indica que data é um valor numério
-							value_B_Dez=10*value_B_Uni;
-							value_B_Uni=data;
-						end
-						else if(data==Change_Signal) begin
-							if(signalB==0) begin
-								signalB=1;
-							end
-							else begin 
-								signalB=0;
-							end
-						end
-
-						out_B<=value_B_Dez+value_B_Uni;
-					end
-				clear: begin
+		case(state) //begin do case(state)
+			editA: begin //begin-edit-A
+					if(data==Def_A) begin
 						value_A_Dez=8'b0;
 						value_A_Uni=8'b0;
+						signalA<=0;
+					end
+					else if(data>=0 && data<=9) begin //Indica que data é um valor numério
+						value_A_Dez=10*value_A_Uni;
+						value_A_Uni=data;
+					end
+					else if(data==Change_Signal) begin
+						signalA<=~signalA;
+					end
+					
+					out_AFake<=value_A_Dez+value_A_Uni;
+				   end//end-edit-A
+			editB: begin
+					if(data==Def_B) begin
 						value_B_Dez=8'b0;
 						value_B_Uni=8'b0;
-						signalA=0;
-						signalB=0;
+						signalB<=0;
+					end
+					else if(data>=0 && data<=9) begin //Indica que data é um valor numério
+						value_B_Dez=10*value_B_Uni;
+						value_B_Uni=data;
+					end
+					else if(data==Change_Signal) begin
+						signalB<=~signalB;
+					end
 
-						out_A=value_A_Dez+value_A_Uni;
-						out_B=value_B_Dez+value_B_Uni;
-					end	
-			endcase
+					out_BFake<=value_B_Dez+value_B_Uni;
+				end
+			clear: begin
+					value_A_Dez<=8'b0;
+					value_A_Uni<=8'b0;
+					value_B_Dez<=8'b0;
+					value_B_Uni<=8'b0;
+					signalA<=0;
+					signalB<=0;
+
+					out_AFake<=0;
+					out_BFake<=0;
+				end	
+			off: begin
+					out_AFake<=100;
+					out_BFake<=100;
+					signalA<=0;
+					signalB<=0;
+				end
+		endcase
+	end
+	
+	always @(posedge CLOCK_50) begin
+		if(isOn) begin
+			tempo=tempo+1'b1;
+			
+			if(state==editA) begin
+				if(tempo<=25000000) begin
+					out_A=100;
+				end
+				else if(tempo<=50000000) begin
+					out_A=out_AFake;
+				end
+				else begin
+					tempo=64'b0;
+				end 
+			end
+			else begin
+				out_A=out_AFake;
+			end
+			
+			if(state==editB) begin
+				if(tempo<=25000000) begin
+					out_B=100;
+				end
+				else if(tempo<=50000000) begin
+					out_B=out_BFake;
+				end
+				else begin
+					tempo=64'b0;
+				end
+			end
+			else begin
+				out_B=out_BFake;
+			end
 		end
 		else begin
-			out_A<=200;
-			out_B<=200;
-			
-			state<=clear
+			out_A=100;
+			out_B=100;
 		end
 	end
 	
 	always begin
-		if(isOn) begin
-			value=out_A*(1-2*signalA)+out_B*(1-2*signalB);
-		
-			if(value==0) begin
-				signalR<=0;
-			end
-			else if(out_A>=out_B) begin
-				signalR<=signalA;
-			end
-			else begin
-				signalR<=signalB;
-			end	
-
-			if(signalR) begin
-				value=~value+1;
-			end	
+		if(!opr) begin
+			fakeSignalB<=signalB;
 		end
 		else begin
-			value=200;
+			fakeSignalB<=~signalB;
+		end
+	
+		value=out_AFake*(1-2*signalA)+out_BFake*(1-2*fakeSignalB);
+	
+		if(value==0) begin
+			signalR<=0;
+		end
+		else if(out_AFake>=out_BFake) begin
+			signalR<=signalA;
+		end
+		else begin
+			signalR<=fakeSignalB;
+		end	
+
+		if(signalR) begin
+			value=~value+1;
 		end
 	end
 endmodule 

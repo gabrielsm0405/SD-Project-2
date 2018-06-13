@@ -7,11 +7,7 @@ module decoder198 (UNI, data, DEZ, CEN, signalIN, signalOUT);
 
 	always begin
 		signalOUT <= ~signalIN;
-		if(data>199) begin
-			CEN=7'b1111111;
-			DEZ=7'b1111111;
-			UNI=7'b1111111;
-		end
+		
 		if(data<100) begin
 			CEN=7'b0000001;
 			if(data>=0 && data<10) begin
@@ -165,7 +161,7 @@ module decoder198 (UNI, data, DEZ, CEN, signalIN, signalOUT);
 				endcase
 			end
 		end
-		else begin
+		else if(data<200) begin
 			CEN=7'b1001111;
 			if(data>=100 && data<110) begin
 				DEZ = 7'b0000001;
@@ -317,6 +313,11 @@ module decoder198 (UNI, data, DEZ, CEN, signalIN, signalOUT);
 					199:UNI=7'b0000100;
 				endcase
 			end
+		end
+		else begin
+			CEN=7'b1111111;
+			DEZ=7'b1111111;
+			UNI=7'b1111111;
 		end
 	end
 endmodule 

@@ -314,7 +314,7 @@ module decoder198 (UNI, data, DEZ, CEN, signalIN, signalOUT);
 				endcase
 			end
 		end
-		else begin
+		else if(data==200) begin
 			CEN=7'b1111111;
 			DEZ=7'b1111111;
 			UNI=7'b1111111;

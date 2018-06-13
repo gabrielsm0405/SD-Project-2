@@ -1,4 +1,4 @@
-Warning (10268): Verilog HDL information at ULA2.v(54): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at ULA2.v(92): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at ULA2.v(158): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at bcd2correto99.v(9): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at ULA2.v(108): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at ULA2.v(203): always construct contains both blocking and non-blocking assignments
 Warning (10268): Verilog HDL information at bcd198correto.v(9): always construct contains both blocking and non-blocking assignments
